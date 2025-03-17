@@ -10,11 +10,11 @@ import javax.crypto.spec.SecretKeySpec
 
 @Component
 class JwtUtils {
-    private val secretKey = "lignting_secret_key_test"
+    private val secretKey = "dansfnkajsnljdnawjdlkanclkasgnlajkdaskndalks".let { Base64.getDecoder().decode(it) }
     private val signatureAlgorithm = SignatureAlgorithm.HS256
     private val secretKeySpec = SecretKeySpec(
-        Base64.getDecoder().decode(secretKey),
-        0, secretKey.length,
+        secretKey,
+        0, secretKey.size,
         signatureAlgorithm.jcaName
     )
     private val ttl = 60 * 60 * 1000L * 24 * 14
